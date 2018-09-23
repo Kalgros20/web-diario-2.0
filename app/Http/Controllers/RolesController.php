@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\roles;
+use App\Role;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -41,10 +41,11 @@ class RolesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\roles  $roles
+     * @param  \App\Role $roles
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show(roles $roles)
+    public function show(Role $roles)
     {
         //
     }
@@ -52,10 +53,11 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\roles  $roles
+     * @param  \App\Role $roles
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit(roles $roles)
+    public function edit(Role $roles)
     {
         //
     }
@@ -63,11 +65,12 @@ class RolesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\roles  $roles
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Role                $roles
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, roles $roles)
+    public function update(Request $request, Role $roles)
     {
         //
     }
@@ -75,10 +78,11 @@ class RolesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\roles  $roles
+     * @param  \App\Role  $roles
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(roles $roles)
+    public function destroy(Role $roles)
     {
         //
     }
