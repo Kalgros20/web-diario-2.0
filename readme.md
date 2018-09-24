@@ -11,8 +11,10 @@ Para executar o projeto é necessário:
     <li>Criar um arquivo .env com base no exemplo (.env.example) e conectar com o banco</li>
         <ul>
             <li>composer install</li>
-            <li>npm i</li>
             <li>composer dump-autoload</li>
+            <li>npm i</li>
+            <li>npm run dev</li>
+            <li>php artisan key:generate</li>
             <li>php artisan migrate</li>
             <li>php artisan db:seed</li>
         </ul>
