@@ -6,9 +6,9 @@ Para executar o projeto é necessário:
 
 <ul>
     <li>Clonar o repositório</li>
-    <li>Ter o PHP e o composer instalados</li>
+    <li>Ter o PHP, composer e mysql instalados</li>
     <li>Executar os seguintes comando da raiz do projeto</li>
-    <li>Criar um arquivo .env com base no exemplo (.env.example)</li>
+    <li>Criar um arquivo .env com base no exemplo (.env.example) e conectar com o banco</li>
         <ul>
             <li>composer install</li>
             <li>npm i</li>
