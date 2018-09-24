@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -55,6 +56,7 @@ class RegisterController extends Controller
             'role' => 'required|int|exists:roles,id',
             'registry' => 'required|int|min:7',
             'password' => 'required|string|min:6|confirmed',
+            'course' => 'required_if:role,'.Role::PROFESSOR_ID.'|int|exists:courses,id',
         ]);
     }
 
@@ -66,13 +68,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role' => $data['role'],
-            'registry' => $data['registry'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User();
+
+        return $user->createUser($data['name'], $data['email'], $data['role'], $data['registry'], $data['password'], $data['course']);
     }
 
     protected function index()
