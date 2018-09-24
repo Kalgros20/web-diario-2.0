@@ -43,7 +43,7 @@ class User extends Authenticatable
         $user->setAttribute(self::EMAIL, $email);
         $user->setAttribute(self::ROLE, $role);
         $user->setAttribute(self::REGISTRY, $registry);
-        $user->setAttribute(self::PASSWORD, $password);
+        $user->setAttribute(self::PASSWORD, Hash::make($password));
         $result = $user->save();
 
         if ($result && $user->getAttribute(self::ROLE) == Role::PROFESSOR) {
@@ -51,6 +51,6 @@ class User extends Authenticatable
             $result = $professor->createProfessor($user->getAttribute(self::ID), $course);
         }
 
-        return $result;
+        return $user;
     }
 }

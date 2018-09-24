@@ -41,19 +41,34 @@
 
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
                             <div class="col-md-6">
 
-                                <select id="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required>
+                                <select id="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" required>
                                     @foreach($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                        <option value="{{$role->id}}" {{ old('role') == $role->id ? 'selected' : '' }}>{{$role->name}}</option>
                                     @endforeach
                                 </select>
-
 
                                 @if ($errors->has('role'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row course-div" style="display: none">
+                            <label for="course" class="col-md-4 col-form-label text-md-right">{{ __('Course') }}</label>
+                            <div class="col-md-6">
+                                <select id="course" class="form-control{{ $errors->has('course') ? ' is-invalid' : '' }}" name="course" required>
+                                    @foreach($courses as $course)
+                                        <option value="{{$course->id}}" {{ old('course') == $course->id ? 'selected' : '' }}>{{$course->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('course'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('course') }}</strong>
                                     </span>
                                 @endif
                             </div>

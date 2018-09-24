@@ -76,5 +76,6 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript" src="{{asset('js/register.js')}}"></script>
 </body>
 </html>

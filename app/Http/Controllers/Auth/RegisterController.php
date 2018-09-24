@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Course;
 use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -75,8 +76,8 @@ class RegisterController extends Controller
 
     protected function index()
     {
-        $roles = DB::table('roles')->get();
-
-        return view('auth/register', compact('roles'));
+        $roles = Role::all();
+        $courses = Course::all();
+        return view('auth/register')->with(compact('roles','courses'));
     }
 }
