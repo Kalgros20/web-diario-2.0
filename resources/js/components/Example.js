@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import '../../css/pure-min.css';
+import '../../css/side-menu.css';
 
 export default class Example extends Component {
     render() {
         return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-header">Example Component</div>
+            <div id="layout">
 
-                            <div className="card-body">
-                                I'm an example component!
-                            </div>
-                        </div>
+                <a href="#menu" id="menuLink" className="menu-link">
+
+                    <span></span>
+                </a>
+
+                <div id="menu">
+                    <div className="pure-menu">
+                        <a className="pure-menu-heading" href="#">Web Diário 2.0</a>
+
+                        <ul className="pure-menu-list">
+                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
+                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Autor</a></li>
+                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
+
+
+                        </ul>
                     </div>
                 </div>
             </div>
