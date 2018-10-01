@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfessorsTable extends Migration
+class CreateOccurrencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateProfessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('professors', function (Blueprint $table) {
-            $table->integer('id')->references('id')->on('users')->primary();
-            $table->integer('course')->references('id')->on('courses');
+        Schema::create('occurrences', function (Blueprint $table) {
+            $table->increments('id');
+            $table->longText('description');
+            $table->integer('responsible')->references('id')->on('users');
+            $table->integer('professor')->references('id')->on('professors');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateProfessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professors');
+        Schema::dropIfExists('occurrences');
     }
 }
