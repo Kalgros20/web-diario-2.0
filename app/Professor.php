@@ -15,21 +15,6 @@ class Professor extends Model
      * @var array
      */
     protected $fillable = [
-        self::COURSE,
+        self::COURSE, self::ID
     ];
-
-    /**
-     * @param $id
-     * @param $course
-     *
-     * @return bool
-     */
-    public function createProfessor($id, $course)
-    {
-        $professor = $this;
-        $professor->setAttribute(self::ID, $id);
-        $professor->setAttribute(self::COURSE, $course);
-
-        return $professor->save();
-    }
 }
