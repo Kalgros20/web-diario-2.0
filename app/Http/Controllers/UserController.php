@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Professor;
+use App\Role;
 use App\User;
+use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,6 +27,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
+
+        if ($user->role == Role::PROFESSOR_ID){
+            $data = $user->getAttributes();
+            $data[Professor::COURSE] = $request->course;
+            Professor::create($data);
+        }
 
         return response()->json($user, 201);
     }
