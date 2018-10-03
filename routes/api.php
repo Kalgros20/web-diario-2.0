@@ -17,14 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('cors')->get('/user', 'UserController@index');
-Route::middleware('cors')->get('/user/{id}', 'UserController@show');
-Route::middleware('cors')->post('/user', 'UserController@store');
-Route::middleware('cors')->put('/user/{id}', 'UserController@update');
-Route::middleware('cors')->delete('/user/{id}', 'UserController@delete');
+Route::get('/user', 'UserController@index');
+Route::get('/user/{id}', 'UserController@show');
+Route::post('/user', 'UserController@store');
+Route::put('/user/{id}', 'UserController@update');
+Route::delete('/user/{id}', 'UserController@delete');
 
-Route::middleware('cors')->get('/occurrence', 'OccurrenceController@index');
-Route::middleware('cors')->get('/occurrence/{id}', 'OccurrenceController@show');
-Route::middleware('cors')->post('/occurrence', 'OccurrenceController@store');
-Route::middleware('cors')->put('/occurrence/{id}', 'OccurrenceController@update');
-Route::middleware('cors')->delete('/occurrence/{id}', 'OccurrenceController@delete');
+Route::get('/occurrence', 'OccurrenceController@index');
+Route::get('/occurrence/{id}', 'OccurrenceController@show');
+Route::post('/occurrence', 'OccurrenceController@store');
+Route::put('/occurrence/{id}', 'OccurrenceController@update');
+Route::delete('/occurrence/{id}', 'OccurrenceController@delete');
