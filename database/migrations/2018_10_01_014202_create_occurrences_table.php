@@ -15,6 +15,7 @@ class CreateOccurrencesTable extends Migration
     {
         Schema::create('occurrences', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
             $table->longText('description');
             $table->integer('responsible')->references('id')->on('users');
             $table->integer('professor')->references('id')->on('professors');
