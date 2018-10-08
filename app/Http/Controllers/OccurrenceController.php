@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Occurrence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OccurrenceController extends Controller
 {
@@ -23,6 +24,12 @@ class OccurrenceController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $this->validator($request->all());
+
+        if ($validation->fails()){
+            return response()->json($validation->errors(), 422);
+        }
+
         $occurrence = Occurrence::create($request->all());
 
         return response()->json($occurrence, 201);
@@ -61,5 +68,22 @@ class OccurrenceController extends Controller
         $occurrence->delete();
 
         return response()->json(null, 204);
+    }
+
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'responsible' => 'required|int|exists:users,id',
+            'professor' => 'required|int|exists:professors,id',
+        ]);
     }
 }
