@@ -15,6 +15,7 @@ class OccurrencesTableSeeder extends Seeder
         DB::table('occurrences')->insert(
             [
                 [
+                    'title' => 'Agressão em sala de aula',
                     'description' => 'O aluno joãozinho agrediu o aluno pedrinho na aula de matematica, pedrinho precisou de cuidados medicos e foi enviado ao pronto socorro',
                     'responsible' => 1,
                     'professor' => 2,
