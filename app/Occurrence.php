@@ -9,6 +9,7 @@ class Occurrence extends Model
     CONST DESCRIPTION = 'description';
     CONST RESPONSIBLE = 'responsible';
     CONST PROFESSOR = 'professor';
+    CONST TITLE = 'title'; 
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,6 @@ class Occurrence extends Model
      * @var array
      */
     protected $fillable = [
-        self::DESCRIPTION, self::RESPONSIBLE, self::PROFESSOR,
+        self::DESCRIPTION, self::RESPONSIBLE, self::PROFESSOR, self::TITLE
     ];
 }

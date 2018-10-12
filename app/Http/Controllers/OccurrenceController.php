@@ -63,11 +63,14 @@ class OccurrenceController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function delete(Occurrence $occurrence)
+    public function delete($id)
     {
-        $occurrence->delete();
-
-        return response()->json(null, 204);
+        $occurrence = Occurrence::findOrFail($id);
+        if($occurrence)
+            $occurrence->delete(); 
+        else
+            return response()->json(error);
+        return response()->json(null); 
     }
 
 
