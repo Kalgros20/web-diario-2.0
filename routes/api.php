@@ -17,14 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/user', 'UserController@index');
-Route::get('/user/{id}', 'UserController@show');
-Route::post('/user', 'UserController@store');
-Route::put('/user/{id}', 'UserController@update');
-Route::delete('/user/{id}', 'UserController@delete');
+Route::resource('user', 'UserController', [
+    'except' => ['edit', 'destroy', 'create']
+]);
 
-Route::get('/occurrence', 'OccurrenceController@index');
-Route::get('/occurrence/{id}', 'OccurrenceController@show');
-Route::post('/occurrence', 'OccurrenceController@store');
-Route::put('/occurrence/{id}', 'OccurrenceController@update');
-Route::delete('/occurrence/{id}', 'OccurrenceController@delete');
+Route::resource('occurrence', 'OccurrenceController', [
+    'except' => ['edit', 'destroy', 'create']
+]);
+
+Route::resource('diaAula', 'DiaAulaController', [
+    'except' => ['edit']
+]);
