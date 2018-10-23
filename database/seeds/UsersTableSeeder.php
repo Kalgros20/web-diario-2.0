@@ -4,6 +4,7 @@ use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class UsersTableSeeder extends Seeder
                     'role' => Role::ADMIN_ID,
                     'email' => 'admin@email.com',
                     'registry' => 123456,
-                    'password' => 123456,
+                    'password' => Hash::make(123456),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -32,7 +33,7 @@ class UsersTableSeeder extends Seeder
                     'role' => Role::PROFESSOR_ID,
                     'email' => 'jorge@email.com',
                     'registry' => 654321,
-                    'password' => 123456,
+                    'password' => Hash::make(123456),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
