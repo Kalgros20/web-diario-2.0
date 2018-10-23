@@ -12,11 +12,9 @@ Para executar o projeto é necessário:
         <ul>
             <li>composer install</li>
             <li>composer dump-autoload</li>
-            <li>npm i</li>
-            <li>npm run dev</li>
             <li>php artisan key:generate</li>
-            <li>php artisan migrate</li>
-            <li>php artisan db:seed</li>
+            <li>php artisan migrate:fresh --seed</li>
+            <li>php artisan passport:install</li>
         </ul>
 <ul>
 
