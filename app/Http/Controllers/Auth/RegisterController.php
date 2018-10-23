@@ -2,51 +2,36 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Course;
+use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    CONST SUCCESS = 200;
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function register(Request $request)
     {
-        $this->middleware('guest');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $user = User::create($input);
+        dd($user->createToken('MyApp')->accessToken);
+        $success['token'] = $user->createToken('MyApp')->accessToken;
+        $success['name'] = $user->name;
+        return response()->json(['success' => $success], self::SUCCESS);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -56,15 +41,15 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'role' => 'required|int|exists:roles,id',
             'registry' => 'required|int|min:7',
-            'password' => 'required|string|min:6|confirmed',
-            'course' => 'required_if:role,'.Role::PROFESSOR_ID.'|int|exists:courses,id',
+            'password' => 'required|string|min:6',
+            'course' => 'required_if:role,' . Role::PROFESSOR_ID . '|int|exists:courses,id',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -72,12 +57,5 @@ class RegisterController extends Controller
         $user = new User();
 
         return $user->createUser($data['name'], $data['email'], $data['role'], $data['registry'], $data['password'], $data['course']);
-    }
-
-    protected function index()
-    {
-        $roles = Role::all();
-        $courses = Course::all();
-        return view('auth/register')->with(compact('roles','courses'));
     }
 }
