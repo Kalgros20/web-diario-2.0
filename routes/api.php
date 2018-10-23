@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/login', 'Auth\LoginController@login');
+
 Route::resource('user', 'UserController', [
     'except' => ['edit', 'destroy', 'create']
 ]);
