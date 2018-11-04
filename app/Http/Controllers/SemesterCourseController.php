@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\SemesterCourse;
 use Illuminate\Http\Request;
-use App\DiaAula;
 
-class DiaAulaController extends Controller
+class SemesterCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DiaAulaController extends Controller
      */
     public function index()
     {
-        DiaAula::all();
+        return SemesterCourse::all();
     }
 
     /**
@@ -35,9 +35,9 @@ class DiaAulaController extends Controller
      */
     public function store(Request $request)
     {
-        $diaAula = DiaAula::create($request->all());
+        $semesterCourse = SemesterCourse::create($request->all());
 
-        return response()->json($diaAula, 201);
+        return response()->json($semesterCourse, 201);
     }
 
     /**
@@ -46,9 +46,20 @@ class DiaAulaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DiaAula $diaAula)
+    public function show($id)
     {
-        return $diaAula;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -58,11 +69,9 @@ class DiaAulaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DiaAula $diaAula)
+    public function update(Request $request, $id)
     {
-        $diaAula->update($request->all());
-
-        return response()->json($diaAula, 200);
+        //
     }
 
     /**
@@ -73,11 +82,13 @@ class DiaAulaController extends Controller
      */
     public function destroy($id)
     {
-        $diaAula = Occurrence::findOrFail($id);
-        if($diaAula)
-            $diaAula->delete();
-        else
+        $semesterCourse = SemesterCourse::findOrFail($id);
+
+        if(!$semesterCourse)){
             return response()->json(error);
+        }
+        $semesterCourse->delete();
+
         return response()->json(null);
     }
 }

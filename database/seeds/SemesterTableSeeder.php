@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class PeriodTableSeeder extends Seeder
+class SemesterTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,20 +11,18 @@ class PeriodTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('periods')->insert(
+        DB::table('semester')->insert(
             [
                 [
                     'id' => 1,
-                    'name' => 'Matutino'
+                    'year' => date('Y'),
+                    'half_year' => 1,
                 ],
                 [
                     'id' => 2,
-                    'name' => 'Vespertino'
+                    'year' => date('Y'),
+                    'half_year' => 2,
                 ],
-                [
-                    'id' => 3,
-                    'name' => 'Noturno'                   
-                ]
             ]
         );
     }

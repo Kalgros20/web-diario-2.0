@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Period extends Model
+class SemesterCourse extends Model
 {
     CONST ID = 'id';
-    CONST NOME = 'name'
-    
+    CONST SEMESTRE = 'semester'
+    CONST CURSO = 'course'
+
     /**
      * The attributes that are mass assignable.
      *

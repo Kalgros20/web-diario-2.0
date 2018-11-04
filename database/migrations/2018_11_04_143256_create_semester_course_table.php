@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeriodsTable extends Migration
+class CreateSemesterCourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePeriodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('periods', function (Blueprint $table) {
+        Schema::create('semester_course', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');            
-            $table->timestamps();
+            $table->integer('semester')->references('id')->on('semester');
+            $table->integer('course')->references('id')->on('courses');
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePeriodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periods');
+        Schema::dropIfExists('semester_course');
     }
 }

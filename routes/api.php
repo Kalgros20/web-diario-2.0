@@ -31,3 +31,7 @@ Route::resource('occurrence', 'OccurrenceController', [
 Route::resource('diaAula', 'DiaAulaController', [
     'except' => ['edit']
 ]);
+
+Route::resource('semesterCourse', 'SemesterCourseController', [
+    'only' => ['index', 'store']
+]);

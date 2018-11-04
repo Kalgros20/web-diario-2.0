@@ -66,11 +66,12 @@ class OccurrenceController extends Controller
     public function delete($id)
     {
         $occurrence = Occurrence::findOrFail($id);
-        if($occurrence)
-            $occurrence->delete(); 
-        else
+        if(!$occurrence){
             return response()->json(error);
-        return response()->json(null); 
+        }
+        $occurrence->delete(); 
+
+        return response()->json(null);
     }
 
 
