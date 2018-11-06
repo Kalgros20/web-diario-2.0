@@ -14,7 +14,8 @@ class ProfessorTableSeeder extends Seeder
         DB::table('professors')->insert(
             [
                 [
-                    'id' => 2,
+                    'id' => 1,
+                    'user_id' => 2,
                     'course' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
