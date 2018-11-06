@@ -22,7 +22,7 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::resource('user', 'UserController', [
     'except' => ['edit', 'destroy', 'create']
-])->middleware('auth:api');
+]);
 
 Route::resource('professor', 'ProfessorController', [
     'except' => ['edit', 'destroy', 'create']
