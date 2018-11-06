@@ -17,10 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', 'Auth\LoginController@login');
+Route::post('/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']);
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::resource('user', 'UserController', [
+    'except' => ['edit', 'destroy', 'create']
+])->middleware('auth:api');
+
+Route::resource('professor', 'ProfessorController', [
     'except' => ['edit', 'destroy', 'create']
 ]);
 

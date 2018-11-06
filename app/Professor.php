@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Professor extends Model
 {
-    CONST ID = 'id';
+    CONST USER_ID = 'user_id';
     CONST COURSE = 'course';
 
     /**
@@ -15,6 +15,6 @@ class Professor extends Model
      * @var array
      */
     protected $fillable = [
-        self::COURSE, self::ID
+        self::COURSE, self::USER_ID
     ];
 }

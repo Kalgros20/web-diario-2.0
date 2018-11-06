@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Professor;
 use App\Role;
-use App\User;
+use App\Professor;
 use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
-use Laravel\Passport\HasApiTokens;
 
-class UserController extends Controller
+class ProfessorController extends Controller
 {
-    use HasApiTokens;
     /**
-     * @return User[]|\Illuminate\Database\Eloquent\Collection
+     * @return Professor[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        return User::all();
+        return Professor::all();
     }
 
     /**
@@ -28,22 +25,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-
-        if ($user->role == Role::PROFESSOR_ID){
-            $data = $user->getAttributes();
-            $data[Professor::COURSE] = $request->course;
-            Professor::create($data);
-        }
+        $user = Professor::create($request->all());
 
         return response()->json($user, 201);
     }
 
     /**
-     * @param User $user
-     * @return User
+     * @param Professor $user
+     * @return Professor
      */
-    public function show(User $user)
+    public function show(Professor $user)
     {
         return $user;
     }
@@ -52,10 +43,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\Professor  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Professor $user)
     {
         $user->update($request->all());
 
@@ -63,11 +54,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
+     * @param Professor $user
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function delete(User $user)
+    public function delete(Professor $user)
     {
         $user->delete();
 
