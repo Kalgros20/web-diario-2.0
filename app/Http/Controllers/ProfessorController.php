@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\Professor;
+use App\User;
 use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,11 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Professor::create($request->all());
-
-        return response()->json($user, 201);
+        $professor = Professor::create($request->all());
+        $user = User::find($request->id);
+        $user->setAttribute(User::ROLE, Role::PROFESSOR_ID);
+        $user->save();
+        return response()->json($professor, 201);
     }
 
     /**

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Occurrence;
+use App\Subject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class OccurrenceController extends Controller
+class SubjectController extends Controller
 {
     /**
-     * @return Occurrence[]|\Illuminate\Database\Eloquent\Collection
+     * @return Subject[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        return Occurrence::all();
+        return Subject::all();
     }
 
     /**
@@ -30,45 +29,46 @@ class OccurrenceController extends Controller
             return response()->json($validation->errors(), 422);
         }
 
-        $occurrence = Occurrence::create($request->all());
+        $subject = Subject::create($request->all());
 
-        return response()->json($occurrence, 201);
+        return response()->json($subject, 201);
     }
 
     /**
-     * @param Occurrence $occurrence
-     * @return Occurrence
+     * @param Subject $subject
+     * @return Subject
      */
-    public function show(Occurrence $occurrence)
+    public function show(Subject $subject)
     {
-        return $occurrence;
+        return $subject;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Occurrence  $occurrence
+     * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Occurrence $occurrence)
+    public function update(Request $request, Subject $subject)
     {
-        $occurrence->update($request->all());
+        $subject->update($request->all());
 
-        return response()->json($occurrence, 200);
+        return response()->json($subject, 200);
     }
 
     /**
-     * @param $id
+     * @param Subject $subject
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete($id)
     {
-        $occurrence = Occurrence::findOrFail($id);
-        if(!$occurrence){
+        $subject = Subject::findOrFail($id);
+        if(!$subject){
             return response()->json(error);
         }
-        $occurrence->delete(); 
+        $subject->delete();
 
         return response()->json(null);
     }
@@ -83,12 +83,9 @@ class OccurrenceController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'semester' => 'required|int|min:1|max:2',
-            'starts_at' => 'required|time',
-            'ends_at' => 'required|time',
-            'qty_classes' => 'required|integer|min:1|max:4',
-            'course' => 'required|int|exists:course,id',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'responsible' => 'required|int|exists:users,id',
             'professor' => 'required|int|exists:professors,id',
         ]);
     }
