@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class SemesterCourse extends Model
 {
     CONST ID = 'id';
-    CONST SEMESTRE = 'semester'
-    CONST CURSO = 'course'
+    CONST SEMESTRE = 'semester';
+    CONST CURSO = 'course';
 
     /**
      * The attributes that are mass assignable.
