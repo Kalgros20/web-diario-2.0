@@ -39,3 +39,7 @@ Route::resource('diaAula', 'DiaAulaController', [
 Route::resource('semesterCourse', 'SemesterCourseController', [
     'only' => ['index', 'store']
 ]);
+
+Route::resource('subject', 'SubjectController', [
+    'except' => ['edit', 'destroy', 'create']
+]);

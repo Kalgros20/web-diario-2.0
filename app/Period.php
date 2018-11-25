@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Period extends Model
 {
     CONST ID = 'id';
-    CONST NOME = 'name'
+    CONST NOME = 'name';
     
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,6 @@ class Period extends Model
      */
     protected $fillable = [
         self::ID,
-        self::NOME,
-        self::CAMPO
+        self::NOME
     ];
 }

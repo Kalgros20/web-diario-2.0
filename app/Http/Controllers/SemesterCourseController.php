@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 class SemesterCourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return SemesterCourse[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
@@ -84,8 +82,8 @@ class SemesterCourseController extends Controller
     {
         $semesterCourse = SemesterCourse::findOrFail($id);
 
-        if(!$semesterCourse)){
-            return response()->json(error);
+        if(!$semesterCourse){
+            return response()->json("error");
         }
         $semesterCourse->delete();
 
