@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
          $this->call(OccurrencesTableSeeder::class);
          $this->call(DiaAulaTableSeeder::class);
          $this->call(PeriodTableSeeder::class);
+         $this->call(SubjectTableSeeder::class);
     }
 }
