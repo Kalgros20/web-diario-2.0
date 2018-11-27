@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class CourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Course[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
@@ -38,10 +36,8 @@ class CourseController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Course $course
+     * @return Course
      */
     public function show(Course $course)
     {
@@ -63,10 +59,9 @@ class CourseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Course $course
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy(Course $course)
     {
