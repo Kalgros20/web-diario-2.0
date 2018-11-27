@@ -32,12 +32,20 @@ Route::resource('occurrence', 'OccurrenceController', [
     'except' => ['create']
 ]);
 
+Route::resource('course', 'ClassDayController', [
+    'except' => ['edit', 'create']
+]);
+
 Route::resource('classDay', 'ClassDayController', [
-    'except' => ['edit']
+    'except' => ['edit', 'create']
 ]);
 
 Route::resource('semesterCourse', 'SemesterCourseController', [
     'only' => ['index', 'store']
+]);
+
+Route::resource('period', 'PeriodController', [
+    'only' => ['index', 'show']
 ]);
 
 Route::resource('subject', 'SubjectController', [

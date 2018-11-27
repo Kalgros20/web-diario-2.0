@@ -14,7 +14,7 @@ class ClassDayController extends Controller
      */
     public function index()
     {
-        ClassDay::all();
+        return ClassDay::all();
     }
 
     /**
