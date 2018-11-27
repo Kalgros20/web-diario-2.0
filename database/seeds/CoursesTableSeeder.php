@@ -17,12 +17,18 @@ class CoursesTableSeeder extends Seeder
                 [
                     'id' => 1,
                     'name' => 'ADS',
+                    'course_duration' => 6,
+                    'class_duration' => 4,
+                    'period' => 2,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
                     'id' => 2,
                     'name' => 'Automação',
+                    'course_duration' => 6,
+                    'class_duration' => 4,
+                    'period' => 2,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
