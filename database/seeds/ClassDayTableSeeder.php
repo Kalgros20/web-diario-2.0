@@ -11,7 +11,7 @@ class ClassDayTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('class_day')->insert(
+        DB::table('class_days')->insert(
             [
                 [
                     'id' => 1,

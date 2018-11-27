@@ -32,7 +32,7 @@ Route::resource('occurrence', 'OccurrenceController', [
     'except' => ['edit', 'destroy', 'create']
 ]);
 
-Route::resource('diaAula', 'DiaAulaController', [
+Route::resource('classDay', 'ClassDayController', [
     'except' => ['edit']
 ]);
 

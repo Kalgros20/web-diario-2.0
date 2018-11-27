@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DiaAula;
+use App\ClassDay;
 
-class DiaAulaController extends Controller
+class ClassDayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DiaAulaController extends Controller
      */
     public function index()
     {
-        DiaAula::all();
+        ClassDay::all();
     }
 
     /**
@@ -73,11 +73,12 @@ class DiaAulaController extends Controller
      */
     public function destroy($id)
     {
-        $diaAula = Occurrence::findOrFail($id);
-        if($diaAula)
+        $diaAula = ClassDay::findOrFail($id);
+        if($diaAula){
             $diaAula->delete();
-        else
-            return response()->json(error);
-        return response()->json(null);
+            return response()->json(null);
+        }
+
+        return response()->json(error);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassDay extends Model
 {
     CONST ID = 'id';
-    CONST SUBJECT = 'subject'
+    CONST SUBJECT = 'subject';
     CONST DAY = 'day';
     CONST CLASSES_GIVEN = 'classes_given';
     CONST NOTE = 'note';

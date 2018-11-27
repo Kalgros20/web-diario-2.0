@@ -13,7 +13,7 @@ class CreateClassDayTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_day', function (Blueprint $table) {
+        Schema::create('class_days', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subject');
             $table->date('day');
@@ -29,6 +29,6 @@ class CreateClassDayTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_day');
+        Schema::dropIfExists('class_days');
     }
 }
