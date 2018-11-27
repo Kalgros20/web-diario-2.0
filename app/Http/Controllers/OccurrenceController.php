@@ -59,18 +59,18 @@ class OccurrenceController extends Controller
     }
 
     /**
-     * @param $id
+     * @param Occurrence $occurrence
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
-    public function delete($id)
+    public function destroy(Occurrence $occurrence)
     {
-        $occurrence = Occurrence::findOrFail($id);
+        $result = $occurrence->delete();
         if(!$occurrence){
-            return response()->json(error);
+            return response()->json($result, 500);
         }
-        $occurrence->delete(); 
 
-        return response()->json(null);
+        return response()->json($occurrence,200);
     }
 
 
@@ -83,12 +83,9 @@ class OccurrenceController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'semester' => 'required|int|min:1|max:2',
-            'starts_at' => 'required|time',
-            'ends_at' => 'required|time',
-            'qty_classes' => 'required|integer|min:1|max:4',
-            'course' => 'required|int|exists:course,id',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'responsible' => 'required|int|exists:users,id',
             'professor' => 'required|int|exists:professors,id',
         ]);
     }
