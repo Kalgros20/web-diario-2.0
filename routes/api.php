@@ -32,6 +32,10 @@ Route::resource('occurrence', 'OccurrenceController', [
     'except' => ['create']
 ]);
 
+Route::resource('semester', 'SemesterController', [
+    'only' => ['show', 'index']
+]);
+
 Route::resource('course', 'CourseController', [
     'except' => ['edit', 'create']
 ]);

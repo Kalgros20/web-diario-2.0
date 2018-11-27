@@ -48,9 +48,9 @@ class SemesterCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $occurrence->update($request->all());
+        $semesterCourse->update($request->all());
 
-        return response()->json($occurrence, 200);
+        return response()->json($semesterCourse, 200);
     }
 
     /**

@@ -18,16 +18,6 @@ class ClassDayController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +25,7 @@ class ClassDayController extends Controller
      */
     public function store(Request $request)
     {
-        $diaAula = DiaAula::create($request->all());
+            $diaAula = ClassDay::create($request->all());
 
         return response()->json($diaAula, 201);
     }
@@ -46,7 +36,7 @@ class ClassDayController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DiaAula $diaAula)
+    public function show(ClassDay $diaAula)
     {
         return $diaAula;
     }
@@ -58,11 +48,11 @@ class ClassDayController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DiaAula $diaAula)
+    public function update(Request $request, ClassDay $classDay)
     {
-        $diaAula->update($request->all());
+        $classDay->update($request->all());
 
-        return response()->json($diaAula, 200);
+        return response()->json($classDay, 200);
     }
 
     /**
@@ -73,9 +63,9 @@ class ClassDayController extends Controller
      */
     public function destroy($id)
     {
-        $diaAula = ClassDay::findOrFail($id);
-        if($diaAula){
-            $diaAula->delete();
+        $classDay = ClassDay::findOrFail($id);
+        if($classDay){
+            $classDay->delete();
             return response()->json(null);
         }
 
