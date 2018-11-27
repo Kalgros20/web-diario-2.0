@@ -16,6 +16,8 @@ class Semester extends Model
      * @var array
      */
     protected $fillable = [
-        self::COURSE, self::ID
+        self::ID,
+        self::YEAR,
+        self::HALF_YEAR
     ];
 }
