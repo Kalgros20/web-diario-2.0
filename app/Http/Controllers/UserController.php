@@ -33,6 +33,8 @@ class UserController extends Controller
         if ($user->role == Role::PROFESSOR_ID){
             $data = $user->getAttributes();
             $data[Professor::COURSE] = $request->course;
+            $data[Professor::USER_ID] = $data[Professor::ID];
+
             Professor::create($data);
         }
 
@@ -67,10 +69,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function delete(User $user)
+    public function destroy(User $user)
     {
-        $user->delete();
+        $result = $user->delete();
+        $professor = Professor::where('user_id',$user->id)->first();
 
-        return response()->json(null, 204);
+        if($professor){
+            $professor->delete();
+        }
+
+        return response()->json($result, 204);
     }
 }
