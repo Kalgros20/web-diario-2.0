@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DiaAula extends Migration
+class CreateClassDayTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class DiaAula extends Migration
      */
     public function up()
     {
-        Schema::create('dia_aula', function (Blueprint $table) {
+        Schema::create('class_day', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('materia');
-            $table->date('dia');
-            $table->integer('aulas_dadas');
-            $table->string('observacao');           
+            $table->integer('subject');
+            $table->date('day');
+            $table->integer('classes_given');
+            $table->string('note');
         });
     }
 
@@ -29,6 +29,6 @@ class DiaAula extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dia_aula');
+        Schema::dropIfExists('class_day');
     }
 }

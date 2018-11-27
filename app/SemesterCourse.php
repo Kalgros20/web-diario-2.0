@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class SemesterCourse extends Model
 {
     CONST ID = 'id';
-    CONST SEMESTRE = 'semester';
-    CONST CURSO = 'course';
+    CONST SEMESTER = 'semester';
+    CONST COURSE = 'course';
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class SemesterCourse extends Model
      */
     protected $fillable = [
         self::ID,
-        self::NOME,
-        self::CAMPO
+        self::SEMESTER,
+        self::COURSE
     ];
 }
