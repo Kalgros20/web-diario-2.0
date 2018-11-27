@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 class SemesterController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Semester[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
@@ -18,14 +16,11 @@ class SemesterController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Semester $semester
+     * @return Semester
      */
     public function show(Semester $semester)
     {
         return $semester;
     }
-
 }
