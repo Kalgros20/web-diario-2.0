@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Professor extends Model
 {
+    CONST ID = 'id';
     CONST USER_ID = 'user_id';
     CONST COURSE = 'course';
 

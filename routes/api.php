@@ -21,7 +21,7 @@ Route::post('/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::resource('user', 'UserController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('professor', 'ProfessorController', [
