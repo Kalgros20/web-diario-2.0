@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SubjectController extends Controller
 {
@@ -62,15 +63,16 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function delete($id)
+    public function destroy(Subject $subject)
     {
-        $subject = Subject::findOrFail($id);
-        if(!$subject){
-            return response()->json(error);
-        }
-        $subject->delete();
 
-        return response()->json(null);
+        $result = $subject->delete();
+
+        if(!$result){
+            return response()->json($result, 500);
+        }
+
+        return response()->json($result, 200);
     }
 
 
@@ -83,9 +85,12 @@ class SubjectController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'responsible' => 'required|int|exists:users,id',
+            'name' => 'required|string|max:255',
+            'course' => 'required|int|exists:users,id',
+            'semester' => 'required|int|exists:semesters,id',
+            'starts_at' => 'required|date_format:H:i',
+            'ends_at' => 'required|date_format:H:i',
+            'qty_classes' => 'required|int|min:2|max:4',
             'professor' => 'required|int|exists:professors,id',
         ]);
     }

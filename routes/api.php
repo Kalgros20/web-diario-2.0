@@ -25,11 +25,11 @@ Route::resource('user', 'UserController', [
 ]);
 
 Route::resource('professor', 'ProfessorController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('occurrence', 'OccurrenceController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('diaAula', 'DiaAulaController', [
@@ -41,5 +41,5 @@ Route::resource('semesterCourse', 'SemesterCourseController', [
 ]);
 
 Route::resource('subject', 'SubjectController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
