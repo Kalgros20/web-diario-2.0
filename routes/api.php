@@ -21,15 +21,15 @@ Route::post('/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::resource('user', 'UserController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('professor', 'ProfessorController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('occurrence', 'OccurrenceController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
 
 Route::resource('classDay', 'ClassDayController', [
@@ -41,5 +41,5 @@ Route::resource('semesterCourse', 'SemesterCourseController', [
 ]);
 
 Route::resource('subject', 'SubjectController', [
-    'except' => ['edit', 'destroy', 'create']
+    'except' => ['create']
 ]);
