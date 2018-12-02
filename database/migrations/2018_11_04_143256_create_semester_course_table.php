@@ -13,10 +13,11 @@ class CreateSemesterCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('semester_course', function (Blueprint $table) {
+        Schema::create('semester_courses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('semester')->references('id')->on('semester');
             $table->integer('course')->references('id')->on('courses');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateSemesterCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semester_course');
+        Schema::dropIfExists('semester_courses');
     }
 }

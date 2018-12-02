@@ -19,6 +19,7 @@ class CreateClassDayTable extends Migration
             $table->date('day');
             $table->integer('classes_given');
             $table->string('note');
+            $table->timestamps();
         });
     }
 

@@ -45,7 +45,7 @@ Route::resource('classDay', 'ClassDayController', [
 ]);
 
 Route::resource('semesterCourse', 'SemesterCourseController', [
-    'only' => ['index', 'store']
+    'except' => ['edit', 'create', 'update']
 ]);
 
 Route::resource('period', 'PeriodController', [

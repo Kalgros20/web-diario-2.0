@@ -18,14 +18,18 @@ class ClassDayTableSeeder extends Seeder
                     'subject' => 2,
                     'day' => new DateTime('2018-11-11'),
                     'classes_given' => 4,
-                    'note' => 'nenhuma'
+                    'note' => 'nenhuma',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
                 [
                     'id' => 2,
                     'subject' => 1,
                     'day' => new DateTime('2018-10-23'),
                     'classes_given' => 2,
-                    'note' => 'nenhuma'
+                    'note' => 'nenhuma',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ]
             ]
         );
